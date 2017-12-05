@@ -14,6 +14,7 @@
 		C89EB1F31FCF32D90008D463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89EB1F11FCF32D90008D463 /* LaunchScreen.storyboard */; };
 		C89EB1FE1FCF32D90008D463 /* Movie_TimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB1FD1FCF32D90008D463 /* Movie_TimeTests.swift */; };
 		C89EB2091FCF32D90008D463 /* Movie_TimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB2081FCF32D90008D463 /* Movie_TimeUITests.swift */; };
+		C89EB2171FD0A9000008D463 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB2161FD0A9000008D463 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C89EB2041FCF32D90008D463 /* Movie TimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movie TimeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89EB2081FCF32D90008D463 /* Movie_TimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_TimeUITests.swift; sourceTree = "<group>"; };
 		C89EB20A1FCF32D90008D463 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89EB2161FD0A9000008D463 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				C89EB1EF1FCF32D90008D463 /* Assets.xcassets */,
 				C89EB1F11FCF32D90008D463 /* LaunchScreen.storyboard */,
 				C89EB1F41FCF32D90008D463 /* Info.plist */,
+				C89EB2161FD0A9000008D463 /* SwiftyJSON.swift */,
 			);
 			path = "Movie Time";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C89EB2171FD0A9000008D463 /* SwiftyJSON.swift in Sources */,
 				C89EB1EB1FCF32D90008D463 /* ViewController.swift in Sources */,
 				C89EB1E91FCF32D90008D463 /* AppDelegate.swift in Sources */,
 			);
