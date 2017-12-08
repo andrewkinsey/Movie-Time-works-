@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     let apiKey = "ab49369946fca622201b54753bf05125"
     var movieID = String()
+    var videoKey = String()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        getVideo(videoCode: "pPEfojnodKY")
-        
     }
     
     func getVideo(videoCode: String)
@@ -36,23 +36,8 @@ class ViewController: UIViewController {
         else
         {
             getMovieID()
-            let query = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=\(apiKey)&append_to_response=videos"
-            DispatchQueue.global(qos: .userInitiated).async
-                {
-                    [unowned self] in
-                    if let url = URL(string: query)
-                    {
-                        if let data = try?Data(contentsOf: url)
-                        {
-                            let json = try?JSON(data: data)
-                            
-                        }
-                        else
-                        {
-                            //solve error
-                        }
-                    }
-            }
+            getVideoCode()
+            getVideo(videoCode: videoKey)
         }
         
     }
@@ -80,9 +65,38 @@ class ViewController: UIViewController {
         }
     }
     
+    func getVideoCode()
+    {
+        let query = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=\(apiKey)&append_to_response=videos"
+        DispatchQueue.global(qos: .userInitiated).async
+            {
+                [unowned self] in
+                if let url = URL(string: query)
+                {
+                    if let data = try?Data(contentsOf: url)
+                    {
+                        let json = try?JSON(data: data)
+                        self.parse(json: json!)
+                        print(self.movieID)
+                        return
+                    }
+                    else
+                    {
+                        //solve error
+                    }
+                }
+        }
+    }
+    
     func parse(json: JSON)
     {
-        
+        //let title = json["original_title"]
+        let videos = json["videos"]
+        let results = videos["results"]
+        let movieVideo = results[0]
+        let videoCode = movieVideo["key"]
+        videoKey = videoCode.stringValue
+        print(videoKey)
     }
     
     func parseQuery(json: JSON)
