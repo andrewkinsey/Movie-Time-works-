@@ -12,11 +12,13 @@ class ViewController: UIViewController {
   
     @IBOutlet weak var myWebView: UIWebView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var textLabel: UILabel!
     let apiKey = "ab49369946fca622201b54753bf05125"
     var movieID = String()
     var videoKey = String()
     var canMoveOn = Bool()
     var jsonResults = String()
+    var movieTitle = String()
     
     override func viewDidLoad()
     {
@@ -27,8 +29,8 @@ class ViewController: UIViewController {
     {
         let url = URL(string: "https://www.youtube.com/embed/\(videoCode)")
         myWebView.loadRequest(URLRequest(url: url!))
+        myWebView.alpha = 1.0
     }
-    
     
     @IBAction func searchButtonTapped(_ sender: Any)
     {
@@ -52,6 +54,10 @@ class ViewController: UIViewController {
                 let deadline = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: deadline)
                     {
+                        self.textLabel.alpha = 1.0
+                        self.textLabel.text = "Showing Results For: \(self.movieTitle)"
+                        self.resignFirstResponder()
+                        self.getVideo(videoCode: self.videoKey)
                         self.getVideo(videoCode: self.videoKey)
                     }
                 }
@@ -81,7 +87,6 @@ class ViewController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
-        
     }
     
     func getVideoCode()
@@ -115,12 +120,13 @@ class ViewController: UIViewController {
     
     func parse(json: JSON)
     {
-        //let title = json["original_title"]
+        let title = json["original_title"]
         let videos = json["videos"]
         let results = videos["results"]
         let movieVideo = results[0]
         let videoCode = movieVideo["key"]
         videoKey = videoCode.stringValue
+        movieTitle = title.stringValue
         print(videoKey)
     }
     
@@ -147,10 +153,6 @@ class ViewController: UIViewController {
             }
         }
     }
-   
     
-    
-    
-
 }
 
